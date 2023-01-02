@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration monitorInterval="20">
+
+  <Properties>
+    <!-- -->
+
+    <Property name="basePath" value="${sys:logDir}/ezara/"/>
+  </Properties>
+
+  <Appenders>
+    <!-- Console Appender -->
+    <Console name="Console" target="SYSTEM_OUT">
+      <PatternLayout pattern="%d{ABSOLUTE} %r %5p (%l) - %m%n" />
+    </Console>
+
+    <!-- Rolling File Appender -->
+    <RollingFile name="RollingFile"
+                 fileName="${basePath}ezara.log"
+                 filePattern="${basePath}ezara_%d{yyyyMMdd}.log.gz">
+      <PatternLayout>
+        <Pattern>%d{ABSOLUTE} %r %5p (%l) - %m%n</Pattern>
+      </PatternLayout>
+      <Policies>
+        <TimeBasedTriggeringPolicy interval="1" modulate="true" />
+      </Policies>
+      <DefaultRolloverStrategy max="100">
+        <Delete basePath="${basePath}" maxDepth="1">
+          <IfFileName glob="*.log">
+            <IfLastModified age="2d">
+              <IfAny>
+                <IfAccumulatedFileCount exceeds="2" />
+              </IfAny>
+            </IfLastModified>
+          </IfFileName>
+        </Delete>
+      </DefaultRolloverStrategy>
+    </RollingFile>
+
+  </Appenders>
+  <Loggers>
+
+    <Root level="DEBUG">
+      <AppenderRef ref="Console" />
+    </Root>
+  </Loggers>
+</Configuration>

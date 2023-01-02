@@ -1,0 +1,6 @@
+package com.dguerrar.zara.dto
+
+import java.io.Serializable;
+
+public class GenericObjectDTO implements Serializable {
+}
