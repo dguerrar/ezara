@@ -1,0 +1,126 @@
+{
+	"info": {
+		"_postman_id": "af008532-bf62-4895-8f59-c10767c3b880",
+		"name": "eZara",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17046722"
+	},
+	"item": [
+		{
+			"name": "all_brands",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/brand-controller/brands",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"brand-controller",
+						"brands"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "all products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/product-controller/products",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"product-controller",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "all price-list-entries",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/price-list-entry-controller/price-list-entries",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"price-list-entry-controller",
+						"price-list-entries"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "price-entries Error2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\"brandId\":\"1\",\r\n\"productId\":\"35455\",\r\n\"date\":\"2020/07/15 10:00:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/price-entry-controller/price-entry-query",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"price-entry-controller",
+						"price-entry-query"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "all price-entries",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"brandId\":\"1\",\r\n\"productId\":\"1\",\r\n\"date\":\"2022/01/01 10:00:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/price-entry-controller/price-entries",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"price-entry-controller",
+						"price-entries"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

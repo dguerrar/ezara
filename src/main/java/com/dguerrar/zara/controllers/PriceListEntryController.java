@@ -1,7 +1,9 @@
 package com.dguerrar.zara.controllers;
 
 import com.dguerrar.zara.dto.ReturnDTO;
+import com.dguerrar.zara.generic.GenericModule;
 import com.dguerrar.zara.managers.BrandManager;
+import com.dguerrar.zara.managers.PriceListEntryManager;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -19,23 +21,23 @@ import java.util.List;
         origins = "*",
         methods = {RequestMethod.GET}
 )
-public class PriceListEntryController {
+public class PriceListEntryController extends GenericModule {
 
     @Autowired
-    private BrandManager brandManager;
+    private PriceListEntryManager priceListEntryManager;
 
-    @GetMapping(value = "brands",produces = "application/json")
-    @Operation(summary = "Gets all brands")
+    @GetMapping(value = "price-list-entries",produces = "application/json")
+    @Operation(summary = "Gets all price-list-entry")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Get all brands",
+            @ApiResponse(responseCode = "200", description = "Get all price-list-entry",
                     content = @Content),
             @ApiResponse(responseCode = "500", description = "Error",
                     content = @Content) })
 
-    public ResponseEntity getAllbrands() throws Exception {
+    public ResponseEntity getAllPriceListEntries() throws Exception {
 
 
-        List<?> objList= brandManager.geAllBrands();
+        List<?> objList= priceListEntryManager.geAllPriceListEntry();
 
         ReturnDTO dto= new ReturnDTO();
         dto.setObject(objList);
@@ -44,4 +46,8 @@ public class PriceListEntryController {
     }
 
 
+    @Override
+    protected Class<?> getLogClass() {
+        return PriceListEntryController.class;
+    }
 }

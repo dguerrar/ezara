@@ -1,7 +1,9 @@
 package com.dguerrar.zara.controllers;
 
 import com.dguerrar.zara.dto.ReturnDTO;
+import com.dguerrar.zara.generic.GenericModule;
 import com.dguerrar.zara.managers.BrandManager;
+import com.dguerrar.zara.managers.ProductManager;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -19,29 +21,32 @@ import java.util.List;
         origins = "*",
         methods = {RequestMethod.GET}
 )
-public class ProductController {
+public class ProductController extends GenericModule {
 
     @Autowired
-    private BrandManager brandManager;
+    private ProductManager productManager;
 
-    @GetMapping(value = "brands",produces = "application/json")
-    @Operation(summary = "Gets all brands")
+    @GetMapping(value = "products",produces = "application/json")
+    @Operation(summary = "Gets all products")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Get all brands",
+            @ApiResponse(responseCode = "200", description = "Get all products",
                     content = @Content),
             @ApiResponse(responseCode = "500", description = "Error",
                     content = @Content) })
 
-    public ResponseEntity getAllbrands() throws Exception {
+    public ResponseEntity getAllProducts() throws Exception {
 
 
-        List<?> objList= brandManager.geAllBrands();
+        List<?> objList = productManager.geAllProducts();
 
-        ReturnDTO dto= new ReturnDTO();
+        ReturnDTO dto = new ReturnDTO();
         dto.setObject(objList);
 
-        return new ResponseEntity<ReturnDTO>(dto,null, HttpStatus.OK);
+        return new ResponseEntity<ReturnDTO>(dto, null, HttpStatus.OK);
     }
 
-
+    @Override
+    protected Class<?> getLogClass() {
+        return ProductController.class;
+    }
 }

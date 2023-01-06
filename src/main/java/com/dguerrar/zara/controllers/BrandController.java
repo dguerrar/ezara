@@ -1,6 +1,7 @@
 package com.dguerrar.zara.controllers;
 
 import com.dguerrar.zara.dto.ReturnDTO;
+import com.dguerrar.zara.generic.GenericModule;
 import com.dguerrar.zara.managers.BrandManager;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -19,7 +20,7 @@ import java.util.List;
         origins = "*",
         methods = {RequestMethod.GET}
 )
-public class BrandController {
+public class BrandController extends GenericModule {
 
     @Autowired
     private BrandManager brandManager;
@@ -32,7 +33,7 @@ public class BrandController {
             @ApiResponse(responseCode = "500", description = "Error",
                     content = @Content) })
 
-    public ResponseEntity getAllbrands() throws Exception {
+    public ResponseEntity getAllBrands() throws Exception {
 
 
         List<?> objList= brandManager.geAllBrands();
@@ -44,4 +45,8 @@ public class BrandController {
     }
 
 
+    @Override
+    protected Class<?> getLogClass() {
+        return BrandController.class;
+    }
 }

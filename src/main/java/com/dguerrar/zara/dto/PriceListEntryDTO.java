@@ -5,7 +5,9 @@ import lombok.Data;
 
 
 @Data
-public class ReturnDTO extends GenericObjectDTO {
+public class PriceListEntryDTO extends GenericObjectDTO {
 
-    private Object object;
+
+    private Long id;
+    private String priceName;
 }

@@ -1,13 +1,14 @@
 package com.dguerrar.zara.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.Date;
+
 
 @Data
 @Entity
@@ -22,25 +23,28 @@ public class PriceEntry implements Serializable {
 
 
     @Column(name="start_date")
-    @JsonFormat(pattern="dd/MM/yyyy HH:mm:ss")
+    @JsonFormat(pattern="yyyy/MM/dd HH:mm:ss")
     private LocalDateTime startDate;
 
     @Column(name="end_date")
-    @JsonFormat(pattern="dd/MM/yyyy HH:mm:ss")
+    @JsonFormat(pattern="yyyy/MM/dd HH:mm:ss")
     private LocalDateTime endDate;
 
     @JoinColumn(name = "brand_id")
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Brand brand;
 
 
     @JoinColumn(name = "product_id")
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Product product;
 
 
     @JoinColumn(name = "price_list_id")
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private PriceListEntry priceListEntry;
 
     @Column(name="priority")
@@ -48,6 +52,9 @@ public class PriceEntry implements Serializable {
 
     @Column(name="price")
     private BigDecimal price;
+
+    @Column(name="currency", length=10)
+    private String currency;
 
 
 }

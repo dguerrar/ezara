@@ -5,7 +5,10 @@ import lombok.Data;
 
 
 @Data
-public class ReturnDTO extends GenericObjectDTO {
+public class ProductDTO extends GenericObjectDTO {
 
-    private Object object;
+
+    private Long id;
+    private String productName;
 }
+

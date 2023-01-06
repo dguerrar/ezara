@@ -1,7 +1,10 @@
 package com.dguerrar.zara.controllers;
 
+import com.dguerrar.zara.dto.QueryDTO;
 import com.dguerrar.zara.dto.ReturnDTO;
+import com.dguerrar.zara.generic.GenericModule;
 import com.dguerrar.zara.managers.BrandManager;
+import com.dguerrar.zara.managers.PriceEntryManager;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -17,31 +20,52 @@ import java.util.List;
 @RequestMapping("price-entry-controller")
 @CrossOrigin(
         origins = "*",
-        methods = {RequestMethod.GET}
+        methods = {RequestMethod.GET, RequestMethod.POST}
 )
-public class PriceEntryController {
+public class PriceEntryController extends GenericModule {
 
     @Autowired
-    private BrandManager brandManager;
+    private PriceEntryManager priceEntryManager;
 
-    @GetMapping(value = "brands",produces = "application/json")
-    @Operation(summary = "Gets all brands")
+    @GetMapping(value = "price-entries", produces = "application/json")
+    @Operation(summary = "Gets all price-entry")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Get all brands",
+            @ApiResponse(responseCode = "200", description = "Get all price-entry",
                     content = @Content),
             @ApiResponse(responseCode = "500", description = "Error",
-                    content = @Content) })
+                    content = @Content)})
 
-    public ResponseEntity getAllbrands() throws Exception {
-
-
-        List<?> objList= brandManager.geAllBrands();
-
-        ReturnDTO dto= new ReturnDTO();
+    public ResponseEntity getAllPrices() throws Exception {
+        List<?> objList = priceEntryManager.geAllPrices();
+        ReturnDTO dto = new ReturnDTO();
         dto.setObject(objList);
-
-        return new ResponseEntity<ReturnDTO>(dto,null, HttpStatus.OK);
+        return new ResponseEntity<ReturnDTO>(dto, null, HttpStatus.OK);
     }
 
 
+    @PostMapping(value = "price-entry-query", produces = "application/json")
+    @Operation(summary = "Get price by query")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Get price by query",
+                    content = @Content),
+            @ApiResponse(responseCode = "400", description = "Error bad format",
+                    content = @Content),
+
+            @ApiResponse(responseCode = "422", description = "Incorrect data provided",
+                    content = @Content),
+            @ApiResponse(responseCode = "500", description = "Generic Error",
+                    content = @Content)})
+    public ResponseEntity getPriceByQueryDTO(@RequestBody QueryDTO queryDTO) throws Exception{
+        List<?> objList = priceEntryManager.getPriceEntryByDates(queryDTO);
+        ReturnDTO dto = new ReturnDTO();
+        dto.setObject(objList);
+        return new ResponseEntity<ReturnDTO>(dto, null, HttpStatus.OK);
+
+    }
+
+
+    @Override
+    protected Class<?> getLogClass() {
+        return PriceEntryController.class;
+    }
 }
