@@ -9,7 +9,7 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 @Data
-@Schema(example = "{\"brandId\":\"1\",\"productId\":\"1\",\"date\":\"2022/01/01 10:00:00\"}")
+@Schema(example = "{\"brandId\":\"1\",\"productId\":\"35455\",\"date\":\"2020/07/15 10:00:00\"}")
 public class QueryDTO extends GenericObjectDTO {
 
     private Long brandId;

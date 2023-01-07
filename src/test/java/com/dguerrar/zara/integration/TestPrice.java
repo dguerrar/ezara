@@ -49,6 +49,14 @@ public class TestPrice {
         assertTrue( String.valueOf(mockResponse.getStatus()).equalsIgnoreCase(String.valueOf(HttpStatus.OK.value())));
     }
 
+    void getPriceEntryByIdOK() throws Exception {
+        ResultActions resultActions = mockMvc.perform(get("/price-entry-controller/price-entry/1")
+                .contentType("application/json"));
+        MockHttpServletResponse mockResponse = resultActions.andReturn()
+                .getResponse();
+
+        assertTrue( String.valueOf(mockResponse.getStatus()).equalsIgnoreCase(String.valueOf(HttpStatus.OK.value())));
+    }
 
 
     @Test

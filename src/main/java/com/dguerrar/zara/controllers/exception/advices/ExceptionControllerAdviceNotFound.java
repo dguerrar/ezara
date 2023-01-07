@@ -1,7 +1,6 @@
 package com.dguerrar.zara.controllers.exception.advices;
 
 import com.dguerrar.zara.Constants.Constants;
-import com.dguerrar.zara.exceptions.InvalidQueryException;
 import com.dguerrar.zara.generic.GenericModule;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,37 +8,33 @@ import org.springframework.orm.jpa.JpaObjectRetrievalFailureException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import java.util.ArrayList;
-import java.util.List;
 
 /**
- *
- * null pointer excetion on Runtime
- *
- *
+ * error when passing from JSON to class on springboot
  *
  */
 
 @ControllerAdvice
-public class ExceptionControllerAdviceInvalid extends GenericModule {
+public class ExceptionControllerAdviceNotFound extends GenericModule {
+
+
     /**
      *
      */
-    private static final long serialVersionUID = 4684103515995236919L;
+    private static final long serialVersionUID = 1772395021354429794L;
 
 
-
-    @ExceptionHandler({InvalidQueryException.class})
+    @ExceptionHandler(	{JpaObjectRetrievalFailureException.class,java.util.NoSuchElementException.class})
     public ResponseEntity exceptionHandler(Exception ex) {
-        log.error("fOUND ExceptionControllerAdviceRuntime" , ex);
+        log.error("fOUND ExceptionControllerAdviceBinding:" , ex);
         log.error("exception type: " + ex.getClass());
-        List<String> recipients= new ArrayList<>();
 
-        return new ResponseEntity(Constants.INVALID_DATA_FORMAT, HttpStatus.UNPROCESSABLE_ENTITY);//422
+        return new ResponseEntity(Constants.ERROR_NOT_FOUND, HttpStatus.NOT_FOUND);//404
+
     }
 
     @Override
     protected Class<?> getLogClass() {
-        return ExceptionControllerAdviceInvalid.class;
+        return ExceptionControllerAdviceNotFound.class;
     }
 }

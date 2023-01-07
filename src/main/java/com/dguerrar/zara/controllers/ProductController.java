@@ -1,5 +1,7 @@
 package com.dguerrar.zara.controllers;
 
+import com.dguerrar.zara.dto.PriceEntryDTO;
+import com.dguerrar.zara.dto.ProductDTO;
 import com.dguerrar.zara.dto.ReturnDTO;
 import com.dguerrar.zara.generic.GenericModule;
 import com.dguerrar.zara.managers.BrandManager;
@@ -44,6 +46,27 @@ public class ProductController extends GenericModule {
 
         return new ResponseEntity<ReturnDTO>(dto, null, HttpStatus.OK);
     }
+
+
+    @GetMapping(value = "product/{id}", produces = "application/json")
+    @Operation(summary = "Get product by id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Get product by id",
+                    content = @Content),
+            @ApiResponse(responseCode = "422", description = "Incorrect data provided",
+                    content = @Content),
+            @ApiResponse(responseCode = "404", description = "Entity not found",
+                    content = @Content),
+            @ApiResponse(responseCode = "500", description = "Generic Error",
+                    content = @Content)})
+    public ResponseEntity getProductById(@PathVariable Long id) throws Exception{
+        ProductDTO dtoEntry = productManager.getProductById(id);
+        ReturnDTO dto = new ReturnDTO();
+        dto.setObject(dtoEntry);
+        return new ResponseEntity<ReturnDTO>(dto, null, HttpStatus.OK);
+
+    }
+
 
     @Override
     protected Class<?> getLogClass() {

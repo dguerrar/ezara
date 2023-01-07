@@ -56,6 +56,14 @@ public class PriceEntryManager extends GenericModule {
 
     }
 
+
+    public PriceEntryDTO getPriceEntryById(Long id){
+
+        Optional<PriceEntry> entryOptional= priceEntryRepository.findById(id);
+
+        return converter.toDTO(entryOptional.get());
+    }
+
     @Override
     protected Class<?> getLogClass() {
         return PriceEntryManager.class;

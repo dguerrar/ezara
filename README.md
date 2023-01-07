@@ -12,7 +12,7 @@
 - Exception are caught on advices to custom messages are returned on erroneous requests
 - In order to make this **TEST** easier and **real-life** focus, I am not using HATEOS neither GraphQL libraries.
 - swagger info is available for reviewing at **http://localhost:8080/swagger-ui/index.html**
-- health check (spring boot actuators) are available at http://localhost:8080/actuator/health
+- health check (spring boot actuators) are available at **http://localhost:8080/actuator/health**
 
 ##IMPORTANT
 - On the request asked in this **TEST**, I prefer to use a POST + a DTO in the body for maintenance optimization.
@@ -23,8 +23,7 @@
 ##TESTS
 - junit + integration tests are used
 - postman collection is enclosed for all requests
-- Only junit + integration tests are done for brand and priceEntry entities
-- Tests for product & priceList are analogs
+- Only junit + integration tests are done for all entities
 
 ###Sample json for postman
 

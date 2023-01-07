@@ -5,6 +5,7 @@ import com.dguerrar.zara.domain.PriceEntry;
 import com.dguerrar.zara.domain.PriceListEntry;
 import com.dguerrar.zara.domain.Product;
 import com.dguerrar.zara.dto.BrandDTO;
+import com.dguerrar.zara.dto.PriceEntryDTO;
 import com.dguerrar.zara.dto.PriceListEntryDTO;
 import com.dguerrar.zara.dto.ProductDTO;
 import com.dguerrar.zara.managers.BrandManager;
@@ -52,6 +53,15 @@ class ZaraApplicationTests {
 	}
 
 	@Test
+	void getBrandById(){
+		BrandDTO brands=brandManager.getBrandById(1l);
+		assertNotNull(brands);
+
+
+	}
+
+
+	@Test
 	void getAllBrands(){
 		List<BrandDTO> brands=brandManager.geAllBrands();
 		assertNotNull(brands);
@@ -67,6 +77,14 @@ class ZaraApplicationTests {
 
 	}
 
+	@Test
+	void getProductById(){
+		ProductDTO products=productManager.getProductById(1l);
+		assertNotNull(products);
+
+
+	}
+
 
 	@Test
 	void getAllPriceListEntry(){
@@ -76,12 +94,27 @@ class ZaraApplicationTests {
 
 	}
 
+	@Test
+	void getPriceListEntryById(){
+		PriceListEntryDTO priceListEntries=priceListEntryManager.getPriceListEntryById(1l);
+		assertNotNull(priceListEntries);
+
+	}
+
 
 	@Test
 	void getAllPriceEntry(){
 		List<PriceEntry> priceEntries=priceEntryManager.geAllPrices();
 		assertNotNull(priceEntries);
 		assertTrue(CollectionUtils.isNotEmpty(priceEntries));
+
+	}
+
+	@Test
+	void getPriceEntryById(){
+		PriceEntryDTO priceEntries=priceEntryManager.getPriceEntryById(1l);
+		assertNotNull(priceEntries);
+
 
 	}
 

@@ -10,13 +10,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
-import static org.junit.jupiter.api.Assertions.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class TestBranch {
+public class TestProduct {
 
 
     @Autowired
@@ -31,8 +32,8 @@ public class TestBranch {
     }
 
     @Test
-    void getAllBrandsOK() throws Exception {
-        ResultActions resultActions = mockMvc.perform(get("/brand-controller/brands")
+    void getAllProductsOK() throws Exception {
+        ResultActions resultActions = mockMvc.perform(get("/product-controller/products")
                         .contentType("application/json"));
         MockHttpServletResponse mockResponse = resultActions.andReturn()
                         .getResponse();
@@ -41,8 +42,8 @@ public class TestBranch {
     }
 
 
-    void getBrandByIdOK() throws Exception {
-        ResultActions resultActions = mockMvc.perform(get("/brand-controller/brand/1")
+    void getProductByIdOK() throws Exception {
+        ResultActions resultActions = mockMvc.perform(get("/product-controller/product/1")
                 .contentType("application/json"));
         MockHttpServletResponse mockResponse = resultActions.andReturn()
                 .getResponse();
@@ -52,8 +53,8 @@ public class TestBranch {
 
 
     @Test
-    void getBrandsError404() throws Exception {
-        ResultActions resultActions = mockMvc.perform(post("/brand-controller/price-entry-query")
+    void getProductsError404() throws Exception {
+        ResultActions resultActions = mockMvc.perform(post("/product-controller/product-query")
                 .contentType("application/json"));
         MockHttpServletResponse mockResponse = resultActions.andReturn()
                 .getResponse();

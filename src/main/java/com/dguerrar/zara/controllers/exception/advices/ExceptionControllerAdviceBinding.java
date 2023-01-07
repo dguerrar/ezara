@@ -27,7 +27,7 @@ public class ExceptionControllerAdviceBinding extends GenericModule {
     private static final long serialVersionUID = 1772395021354429794L;
 
 
-    @ExceptionHandler(	{org.springframework.http.converter.HttpMessageNotReadableException.class})
+    @ExceptionHandler(	{org.springframework.http.converter.HttpMessageNotReadableException.class,org.springframework.web.method.annotation.MethodArgumentTypeMismatchException.class})
     public ResponseEntity exceptionHandler(Exception ex) {
         log.error("fOUND ExceptionControllerAdviceBinding:" , ex);
         log.error("exception type: " + ex.getClass());

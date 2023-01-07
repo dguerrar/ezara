@@ -121,6 +121,134 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "get price-entry by id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"brandId\":\"1\",\r\n\"productId\":\"1\",\r\n\"date\":\"2022/01/01 10:00:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/price-entry-controller/price-entry/255",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"price-entry-controller",
+						"price-entry",
+						"255"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get price-list-entry by id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"brandId\":\"1\",\r\n\"productId\":\"1\",\r\n\"date\":\"2022/01/01 10:00:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/price-list-entry-controller/price-list-entry/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"price-list-entry-controller",
+						"price-list-entry",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get product by id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"brandId\":\"1\",\r\n\"productId\":\"1\",\r\n\"date\":\"2022/01/01 10:00:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/product-controller/product/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"product-controller",
+						"product",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get brand by id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"brandId\":\"1\",\r\n\"productId\":\"1\",\r\n\"date\":\"2022/01/01 10:00:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/brand-controller/brand/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"brand-controller",
+						"brand",
+						"1"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
