@@ -15,6 +15,7 @@
 - health check (spring boot actuators) are available at **http://localhost:8080/actuator/health**
 - No interfaces are defined in order to shorten the **TEST** and as everything is created as a singleton (Autowired) so in the IoC is clear also. 
 - Some generic objects are created in order to re-use code.
+- JDK 11 is used
 
 ##IMPORTANT
 - On the request asked in this **TEST**, I prefer to use a POST + a DTO in the body for maintenance optimization.
