@@ -11,7 +11,7 @@ public class PriceEntryDTO extends GenericObjectDTO {
 
     private Long productId;
     private Long brandId;
-    private Long priceListEntryId;
+    private Long tariffId;
     private LocalDateTime startDate;
     private LocalDateTime endDate;
     private BigDecimal price;

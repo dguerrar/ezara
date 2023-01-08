@@ -42,10 +42,10 @@ public class PriceEntry implements Serializable {
     private Product product;
 
 
-    @JoinColumn(name = "price_list_id")
+    @JoinColumn(name = "tariff_id")
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    private PriceListEntry priceListEntry;
+    private Tariff tariff;
 
     @Column(name="priority")
     private Integer priority;

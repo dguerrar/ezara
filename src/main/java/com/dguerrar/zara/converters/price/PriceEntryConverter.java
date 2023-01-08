@@ -1,10 +1,9 @@
-package com.dguerrar.zara.converters;
+package com.dguerrar.zara.converters.price;
 
 import com.dguerrar.zara.domain.Brand;
 import com.dguerrar.zara.domain.PriceEntry;
-import com.dguerrar.zara.domain.PriceListEntry;
+import com.dguerrar.zara.domain.Tariff;
 import com.dguerrar.zara.domain.Product;
-import com.dguerrar.zara.dto.BrandDTO;
 import com.dguerrar.zara.dto.PriceEntryDTO;
 import com.dguerrar.zara.generic.GenericConverter;
 import com.dguerrar.zara.generic.GenericModule;
@@ -27,7 +26,7 @@ public class PriceEntryConverter extends GenericModule implements GenericConvert
 
         //set many to one entities
         dto.setBrandId(entry.getBrand().getId());
-        dto.setPriceListEntryId(entry.getPriceListEntry().getId());
+        dto.setTariffId(entry.getTariff().getId());
         dto.setProductId(entry.getProduct().getId());
 
 
@@ -51,9 +50,9 @@ public class PriceEntryConverter extends GenericModule implements GenericConvert
         product.setId(dto.getProductId());
         entry.setProduct(product);
 
-        PriceListEntry ple= new PriceListEntry();
-        ple.setId(dto.getPriceListEntryId());
-        entry.setPriceListEntry(ple);
+        Tariff ple= new Tariff();
+        ple.setId(dto.getTariffId());
+        entry.setTariff(ple);
 
 
         return entry;

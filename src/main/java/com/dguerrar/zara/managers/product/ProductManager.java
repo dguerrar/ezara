@@ -1,6 +1,6 @@
-package com.dguerrar.zara.managers;
+package com.dguerrar.zara.managers.product;
 
-import com.dguerrar.zara.converters.ProductConverter;
+import com.dguerrar.zara.converters.product.ProductConverter;
 
 import com.dguerrar.zara.domain.Product;
 

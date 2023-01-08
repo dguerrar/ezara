@@ -1,11 +1,9 @@
-package com.dguerrar.zara.controllers;
+package com.dguerrar.zara.controllers.tariff;
 
-import com.dguerrar.zara.dto.PriceEntryDTO;
-import com.dguerrar.zara.dto.PriceListEntryDTO;
+import com.dguerrar.zara.dto.TariffDTO;
 import com.dguerrar.zara.dto.ReturnDTO;
 import com.dguerrar.zara.generic.GenericModule;
-import com.dguerrar.zara.managers.BrandManager;
-import com.dguerrar.zara.managers.PriceListEntryManager;
+import com.dguerrar.zara.managers.tariff.TariffManager;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -18,28 +16,28 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("price-list-entry-controller")
+@RequestMapping("tariff-controller")
 @CrossOrigin(
         origins = "*",
         methods = {RequestMethod.GET}
 )
-public class PriceListEntryController extends GenericModule {
+public class TariffController extends GenericModule {
 
     @Autowired
-    private PriceListEntryManager priceListEntryManager;
+    private TariffManager tariffManager;
 
-    @GetMapping(value = "price-list-entries",produces = "application/json")
-    @Operation(summary = "Gets all price-list-entry")
+    @GetMapping(value = "tariffs",produces = "application/json")
+    @Operation(summary = "Gets all tariffs")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Get all price-list-entry",
+            @ApiResponse(responseCode = "200", description = "Get all tariffs",
                     content = @Content),
             @ApiResponse(responseCode = "500", description = "Error",
                     content = @Content) })
 
-    public ResponseEntity getAllPriceListEntries() throws Exception {
+    public ResponseEntity getAllTariffs() throws Exception {
 
 
-        List<?> objList= priceListEntryManager.geAllPriceListEntry();
+        List<?> objList= tariffManager.geAllTariffs();
 
         ReturnDTO dto= new ReturnDTO();
         dto.setObject(objList);
@@ -48,10 +46,10 @@ public class PriceListEntryController extends GenericModule {
     }
 
 
-    @GetMapping(value = "price-list-entry/{id}", produces = "application/json")
-    @Operation(summary = "Get price list by id")
+    @GetMapping(value = "tariff/{id}", produces = "application/json")
+    @Operation(summary = "Get tariff by id")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Get price list by id",
+            @ApiResponse(responseCode = "200", description = "Get tariff by id",
                     content = @Content),
             @ApiResponse(responseCode = "422", description = "Incorrect data provided",
                     content = @Content),
@@ -59,8 +57,8 @@ public class PriceListEntryController extends GenericModule {
                     content = @Content),
             @ApiResponse(responseCode = "500", description = "Generic Error",
                     content = @Content)})
-    public ResponseEntity getPriceListById(@PathVariable Long id) throws Exception{
-        PriceListEntryDTO dtoEntry = priceListEntryManager.getPriceListEntryById(id);
+    public ResponseEntity getTtariffariffById(@PathVariable Long id) throws Exception{
+        TariffDTO dtoEntry = tariffManager.getTariffById(id);
         ReturnDTO dto = new ReturnDTO();
         dto.setObject(dtoEntry);
         return new ResponseEntity<ReturnDTO>(dto, null, HttpStatus.OK);
@@ -70,6 +68,6 @@ public class PriceListEntryController extends GenericModule {
 
     @Override
     protected Class<?> getLogClass() {
-        return PriceListEntryController.class;
+        return TariffController.class;
     }
 }

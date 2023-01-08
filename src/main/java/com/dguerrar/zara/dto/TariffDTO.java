@@ -5,9 +5,9 @@ import lombok.Data;
 
 
 @Data
-public class PriceListEntryDTO extends GenericObjectDTO {
+public class TariffDTO extends GenericObjectDTO {
 
 
     private Long id;
-    private String priceName;
+    private String tariffName;
 }

@@ -5,11 +5,11 @@ CREATE TABLE IF NOT EXISTS brand
     CONSTRAINT brand_pkey PRIMARY KEY (id)
 );
 
-CREATE TABLE IF NOT EXISTS price_list
+CREATE TABLE IF NOT EXISTS tariff
 (
     id SERIAL,
-    price_name  varchar(100) NOT NULL,
-    CONSTRAINT price_pkey PRIMARY KEY (id)
+    tariff_name  varchar(100) NOT NULL,
+    CONSTRAINT tariff_pkey PRIMARY KEY (id)
 );
 
 CREATE TABLE IF NOT EXISTS product
@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS prices
     id SERIAL,
     brand_id integer NOT NULL,
     product_id  integer NOT NULL,
-    price_list_id  integer NOT NULL,
+    tariff_id  integer NOT NULL,
     start_date timestamp NOT NULL,
     end_date timestamp NOT NULL,
     priority integer NOT NULL,
@@ -34,6 +34,6 @@ CREATE TABLE IF NOT EXISTS prices
     CONSTRAINT prices_pkey PRIMARY KEY (id),
     FOREIGN KEY (brand_id) REFERENCES brand(id),
     FOREIGN KEY (product_id) REFERENCES product(id),
-    FOREIGN KEY (price_list_id) REFERENCES price_list(id)
+    FOREIGN KEY (tariff_id) REFERENCES tariff(id)
 
 );

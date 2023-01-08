@@ -1,11 +1,7 @@
-package com.dguerrar.zara.converters;
+package com.dguerrar.zara.converters.product;
 
-import com.dguerrar.zara.domain.Brand;
-import com.dguerrar.zara.domain.PriceListEntry;
 import com.dguerrar.zara.domain.Product;
 
-import com.dguerrar.zara.dto.BrandDTO;
-import com.dguerrar.zara.dto.PriceListEntryDTO;
 import com.dguerrar.zara.dto.ProductDTO;
 import com.dguerrar.zara.generic.GenericConverter;
 import com.dguerrar.zara.generic.GenericModule;

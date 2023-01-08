@@ -1,11 +1,10 @@
-package com.dguerrar.zara.controllers;
+package com.dguerrar.zara.controllers.price;
 
 import com.dguerrar.zara.dto.PriceEntryDTO;
 import com.dguerrar.zara.dto.QueryDTO;
 import com.dguerrar.zara.dto.ReturnDTO;
 import com.dguerrar.zara.generic.GenericModule;
-import com.dguerrar.zara.managers.BrandManager;
-import com.dguerrar.zara.managers.PriceEntryManager;
+import com.dguerrar.zara.managers.price.PriceEntryManager;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;

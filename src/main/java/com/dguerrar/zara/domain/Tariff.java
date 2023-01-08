@@ -7,14 +7,14 @@ import java.io.Serializable;
 
 @Data
 @Entity
-@Table(name="price_list")
-public class PriceListEntry implements Serializable {
+@Table(name="tariff")
+public class Tariff implements Serializable {
 
     @Id
     @Column(name="id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name="price_name", length=100)
-    private String priceName;
+    @Column(name="tariff_name", length=100)
+    private String tariffName;
 }

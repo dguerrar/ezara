@@ -1,11 +1,9 @@
-package com.dguerrar.zara.controllers;
+package com.dguerrar.zara.controllers.brand;
 
-import com.dguerrar.zara.dto.PriceEntryDTO;
-import com.dguerrar.zara.dto.ProductDTO;
+import com.dguerrar.zara.dto.BrandDTO;
 import com.dguerrar.zara.dto.ReturnDTO;
 import com.dguerrar.zara.generic.GenericModule;
-import com.dguerrar.zara.managers.BrandManager;
-import com.dguerrar.zara.managers.ProductManager;
+import com.dguerrar.zara.managers.brand.BrandManager;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -18,40 +16,40 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("product-controller")
+@RequestMapping("brand-controller")
 @CrossOrigin(
         origins = "*",
         methods = {RequestMethod.GET}
 )
-public class ProductController extends GenericModule {
+public class BrandController extends GenericModule {
 
     @Autowired
-    private ProductManager productManager;
+    private BrandManager brandManager;
 
-    @GetMapping(value = "products",produces = "application/json")
-    @Operation(summary = "Gets all products")
+    @GetMapping(value = "brands",produces = "application/json")
+    @Operation(summary = "Gets all brands")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Get all products",
+            @ApiResponse(responseCode = "200", description = "Get all brands",
                     content = @Content),
             @ApiResponse(responseCode = "500", description = "Error",
                     content = @Content) })
 
-    public ResponseEntity getAllProducts() throws Exception {
+    public ResponseEntity getAllBrands() throws Exception {
 
 
-        List<?> objList = productManager.geAllProducts();
+        List<?> objList= brandManager.geAllBrands();
 
-        ReturnDTO dto = new ReturnDTO();
+        ReturnDTO dto= new ReturnDTO();
         dto.setObject(objList);
 
-        return new ResponseEntity<ReturnDTO>(dto, null, HttpStatus.OK);
+        return new ResponseEntity<ReturnDTO>(dto,null, HttpStatus.OK);
     }
 
 
-    @GetMapping(value = "product/{id}", produces = "application/json")
-    @Operation(summary = "Get product by id")
+    @GetMapping(value = "brand/{id}", produces = "application/json")
+    @Operation(summary = "Get brand by id")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Get product by id",
+            @ApiResponse(responseCode = "200", description = "Get brand by id",
                     content = @Content),
             @ApiResponse(responseCode = "422", description = "Incorrect data provided",
                     content = @Content),
@@ -59,17 +57,16 @@ public class ProductController extends GenericModule {
                     content = @Content),
             @ApiResponse(responseCode = "500", description = "Generic Error",
                     content = @Content)})
-    public ResponseEntity getProductById(@PathVariable Long id) throws Exception{
-        ProductDTO dtoEntry = productManager.getProductById(id);
+    public ResponseEntity getBrandById(@PathVariable Long id) throws Exception{
+        BrandDTO dtoEntry = brandManager.getBrandById(id);
         ReturnDTO dto = new ReturnDTO();
         dto.setObject(dtoEntry);
         return new ResponseEntity<ReturnDTO>(dto, null, HttpStatus.OK);
 
     }
 
-
     @Override
     protected Class<?> getLogClass() {
-        return ProductController.class;
+        return BrandController.class;
     }
 }

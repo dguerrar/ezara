@@ -1,4 +1,4 @@
-package com.dguerrar.zara.converters;
+package com.dguerrar.zara.converters.brand;
 
 import com.dguerrar.zara.domain.Brand;
 import com.dguerrar.zara.dto.BrandDTO;

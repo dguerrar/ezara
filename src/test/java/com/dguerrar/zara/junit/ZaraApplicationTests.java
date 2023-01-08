@@ -1,17 +1,14 @@
 package com.dguerrar.zara.junit;
 
-import com.dguerrar.zara.domain.Brand;
 import com.dguerrar.zara.domain.PriceEntry;
-import com.dguerrar.zara.domain.PriceListEntry;
-import com.dguerrar.zara.domain.Product;
 import com.dguerrar.zara.dto.BrandDTO;
 import com.dguerrar.zara.dto.PriceEntryDTO;
-import com.dguerrar.zara.dto.PriceListEntryDTO;
+import com.dguerrar.zara.dto.TariffDTO;
 import com.dguerrar.zara.dto.ProductDTO;
-import com.dguerrar.zara.managers.BrandManager;
-import com.dguerrar.zara.managers.PriceEntryManager;
-import com.dguerrar.zara.managers.PriceListEntryManager;
-import com.dguerrar.zara.managers.ProductManager;
+import com.dguerrar.zara.managers.brand.BrandManager;
+import com.dguerrar.zara.managers.price.PriceEntryManager;
+import com.dguerrar.zara.managers.tariff.TariffManager;
+import com.dguerrar.zara.managers.product.ProductManager;
 import org.apache.commons.collections4.CollectionUtils;
 import org.flywaydb.core.Flyway;
 import org.junit.jupiter.api.BeforeEach;
@@ -34,7 +31,7 @@ class ZaraApplicationTests {
 	private ProductManager productManager;
 
 	@Autowired
-	private PriceListEntryManager priceListEntryManager;
+	private TariffManager tariffManager;
 
 	@Autowired
 	private PriceEntryManager priceEntryManager;
@@ -87,16 +84,16 @@ class ZaraApplicationTests {
 
 
 	@Test
-	void getAllPriceListEntry(){
-		List<PriceListEntryDTO> priceListEntries=priceListEntryManager.geAllPriceListEntry();
-		assertNotNull(priceListEntries);
-		assertTrue(CollectionUtils.isNotEmpty(priceListEntries));
+	void getAllTariffs(){
+		List<TariffDTO> tariffs= tariffManager.geAllTariffs();
+		assertNotNull(tariffs);
+		assertTrue(CollectionUtils.isNotEmpty(tariffs));
 
 	}
 
 	@Test
-	void getPriceListEntryById(){
-		PriceListEntryDTO priceListEntries=priceListEntryManager.getPriceListEntryById(1l);
+	void getTariffById(){
+		TariffDTO priceListEntries= tariffManager.getTariffById(1l);
 		assertNotNull(priceListEntries);
 
 	}

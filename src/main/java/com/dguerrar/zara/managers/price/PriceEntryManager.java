@@ -1,11 +1,11 @@
-package com.dguerrar.zara.managers;
+package com.dguerrar.zara.managers.price;
 
-import com.dguerrar.zara.converters.PriceEntryConverter;
+import com.dguerrar.zara.converters.price.PriceEntryConverter;
 import com.dguerrar.zara.domain.PriceEntry;
 import com.dguerrar.zara.dto.PriceEntryDTO;
 import com.dguerrar.zara.dto.QueryDTO;
 import com.dguerrar.zara.generic.GenericModule;
-import com.dguerrar.zara.managers.validators.PriceEntryValidator;
+import com.dguerrar.zara.managers.price.validators.PriceEntryValidator;
 import com.dguerrar.zara.repositories.PriceEntryRepository;
 import com.dguerrar.zara.repositories.specifications.PriceEntryFinderSpecification;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,11 +15,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class PriceEntryManager extends GenericModule {

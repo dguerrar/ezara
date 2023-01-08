@@ -1,4 +1,4 @@
-package com.dguerrar.zara.managers.validators;
+package com.dguerrar.zara.managers.price.validators;
 
 import com.dguerrar.zara.dto.QueryDTO;
 import com.dguerrar.zara.exceptions.InvalidQueryException;

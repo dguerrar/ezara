@@ -17,7 +17,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class TestPriceList {
+public class TestTariffs {
 
 
     @Autowired
@@ -33,7 +33,7 @@ public class TestPriceList {
 
     @Test
     void getAllPriceListOK() throws Exception {
-        ResultActions resultActions = mockMvc.perform(get("/price-list-entry-controller/price-list-entries")
+        ResultActions resultActions = mockMvc.perform(get("/tariff-controller/tariffs")
                         .contentType("application/json"));
         MockHttpServletResponse mockResponse = resultActions.andReturn()
                         .getResponse();
@@ -43,7 +43,7 @@ public class TestPriceList {
 
 
     void getPriceListByIdOK() throws Exception {
-        ResultActions resultActions = mockMvc.perform(get("/price-list-entry-controller/price-list-entry/1")
+        ResultActions resultActions = mockMvc.perform(get("/tariff-controller/tariff/1")
                 .contentType("application/json"));
         MockHttpServletResponse mockResponse = resultActions.andReturn()
                 .getResponse();
@@ -54,7 +54,7 @@ public class TestPriceList {
 
     @Test
     void getPriceListError404() throws Exception {
-        ResultActions resultActions = mockMvc.perform(post("/price-list-entry-controller/price-list-query")
+        ResultActions resultActions = mockMvc.perform(post("/tariff-controller/tariff-query")
                 .contentType("application/json"));
         MockHttpServletResponse mockResponse = resultActions.andReturn()
                 .getResponse();
