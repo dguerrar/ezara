@@ -22,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
-class ZaraApplicationTests {
+class JunitTests {
 
 	@Autowired
 	private BrandManager brandManager;

@@ -13,6 +13,8 @@
 - In order to make this **TEST** easier and **real-life** focus, I am not using HATEOS neither GraphQL libraries.
 - swagger info is available for reviewing at **http://localhost:8080/swagger-ui/index.html**
 - health check (spring boot actuators) are available at **http://localhost:8080/actuator/health**
+- No interfaces are defined in order to shorten the **TEST** and as everything is created as a singleton (Autowired) so in the IoC is clear also. 
+- Some generic objects are created in order to re-use code.
 
 ##IMPORTANT
 - On the request asked in this **TEST**, I prefer to use a POST + a DTO in the body for maintenance optimization.
@@ -24,6 +26,7 @@
 - junit + integration tests are used
 - postman collection is enclosed for all requests
 - Only junit + integration tests are done for all entities
+- The **5 Proposed** tests are done as JUNIT
 
 ###Sample json for postman
 

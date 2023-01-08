@@ -56,7 +56,7 @@ public class PriceEntryController extends GenericModule {
             @ApiResponse(responseCode = "500", description = "Generic Error",
                     content = @Content)})
     public ResponseEntity getPriceByQueryDTO(@RequestBody QueryDTO queryDTO) throws Exception{
-        List<?> objList = priceEntryManager.getPriceEntryByDates(queryDTO);
+        List<?> objList = priceEntryManager.getPriceEntryByQuery(queryDTO);
         ReturnDTO dto = new ReturnDTO();
         dto.setObject(objList);
         return new ResponseEntity<ReturnDTO>(dto, null, HttpStatus.OK);

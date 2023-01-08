@@ -37,7 +37,7 @@ public class PriceEntryManager extends GenericModule {
         return priceEntryRepository.findAll();
     }
 
-    public List<PriceEntryDTO>  getPriceEntryByDates(QueryDTO queryDTO) throws Exception {
+    public List<PriceEntryDTO>  getPriceEntryByQuery(QueryDTO queryDTO) throws Exception {
 
         validator.validate(queryDTO);
 
