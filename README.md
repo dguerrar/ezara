@@ -36,3 +36,10 @@
 "productId":"1",
 "date":"2022/01/01 10:00:00"
 }
+
+
+##credits
+https://www.baeldung.com/spring-graphql
+https://www.paradigmadigital.com/dev/graphql-todos-uno-uno-todos/
+https://graphql.org/graphql-js/basic-types/
+

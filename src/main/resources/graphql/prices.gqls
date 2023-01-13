@@ -1,0 +1,34 @@
+type PriceEntry {
+    product: Product!
+    brand: Brand!
+    tariff: Tariff!
+    startDate: String!
+    endDate: String!
+    price: Float!
+    currency: String!
+    priority: Int!
+}
+
+
+type Brand{
+    id: ID!
+    brandName: String!
+}
+
+
+type Tariff{
+    id: ID!
+    tariffName: String!
+}
+
+type Product{
+    id: ID!
+    productName: String!
+}
+
+# The Root Query for the application
+type Query {
+    getPriceByDateAndPriority(tariff: Int, productId: Int, brandId: Int, currentDate: String): [PriceEntry]!
+    priceEntries: [PriceEntry]
+}
+

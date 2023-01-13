@@ -1,5 +1,6 @@
 package com.dguerrar.zara.controllers.price;
 
+import com.dguerrar.zara.domain.PriceEntry;
 import com.dguerrar.zara.dto.PriceEntryDTO;
 import com.dguerrar.zara.dto.QueryDTO;
 import com.dguerrar.zara.dto.ReturnDTO;
@@ -10,6 +11,8 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.graphql.data.method.annotation.Argument;
+import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -85,6 +88,17 @@ public class PriceEntryController extends GenericModule {
     }
 
 
+    @QueryMapping
+    public List<PriceEntry> getPriceByDateAndPriority(@Argument int tariff, @Argument int productId, @Argument int brandId,@Argument String currentDate) {
+        List<PriceEntry>objList = priceEntryManager.geAllPrices();
+        return objList;
+    }
+
+    @QueryMapping
+    public List<PriceEntry>  priceEntries(){
+        List<PriceEntry>objList = priceEntryManager.geAllPrices();
+        return objList;
+    }
 
 
     @Override
