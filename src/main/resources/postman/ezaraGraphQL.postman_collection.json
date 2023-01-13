@@ -1,0 +1,62 @@
+{
+	"info": {
+		"_postman_id": "5ac8d456-7481-4dbd-a1cf-9d14621c36a2",
+		"name": "ezaraGraphQL",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17046722"
+	},
+	"item": [
+		{
+			"name": "get all prices graphQL",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query{\r\n    priceEntries{\r\n        brand{id}\r\n        currency,\r\n        price\r\n    }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/graphql/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"graphql",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get pricesby query graphQL",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query getPriceByDateAndPriority(\r\n    $tariffId: String!,\r\n    $productId: String!,\r\n    $brandId: String!,\r\n    $currentDate: String!\r\n){\r\ngetPriceByDateAndPriority(\r\n    tariffId: $tariff,\r\n    productId: $productId,\r\n    brandId: $brandId,\r\n    currentDate: $currentDate\r\n){\r\nbrand{id}\r\n}\r\n\r\n}\r\n",
+						"variables": "{\r\n\"tariffId\":10,\r\n\"productId\":10,\r\n\"brandId\":10,\r\n\"currentDate\":\"hoy\"\r\n\r\n}"
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/graphql/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"graphql",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
