@@ -34,8 +34,30 @@ public class PriceEntryManager extends GenericModule {
     private PriceEntryConverter converter;
 
     public List<PriceEntry> geAllPrices(){
+
         return priceEntryRepository.findAll();
     }
+
+
+
+    public List<PriceEntry>  getPriceEntryByQuerygrapQL(QueryDTO queryDTO) throws Exception {
+
+        validator.validate(queryDTO);
+
+        Pageable pageable = PageRequest.of(0, 1,Sort.by("priority").descending());
+
+        Page<PriceEntry>  priceEntryFirst= priceEntryRepository.findAll(priceEntryFinderSpecification.findBetweenDates(queryDTO.getDate())
+                        .and(priceEntryFinderSpecification.findOnBrand(queryDTO.getBrandId()))
+                        .and (priceEntryFinderSpecification.findOnProduct(queryDTO.getProductId())
+                                .and(priceEntryFinderSpecification.findOntariff(queryDTO.getTariffId()))),
+                pageable
+        );
+
+
+        return priceEntryFirst.toList();
+
+    }
+
 
     public List<PriceEntryDTO>  getPriceEntryByQuery(QueryDTO queryDTO) throws Exception {
 
@@ -48,8 +70,9 @@ public class PriceEntryManager extends GenericModule {
                 .and (priceEntryFinderSpecification.findOnProduct(queryDTO.getProductId())),
                 pageable
         );
-        return converter.toDTOList(priceEntryFirst.toList());
 
+
+        return converter.toDTOList(priceEntryFirst.toList());
 
     }
 

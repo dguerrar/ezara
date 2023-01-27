@@ -28,7 +28,7 @@ type Product{
 
 # The Root Query for the application
 type Query {
-    getPriceByDateAndPriority(tariff: Int, productId: Int, brandId: Int, currentDate: String): [PriceEntry]!
+    getPriceByDateAndPriorityAndTariff(tariffId: Int, productId: Int, brandId: Int, currentDate: String): [PriceEntry]!
     priceEntries: [PriceEntry]
 }
 

@@ -17,6 +17,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @RestController
@@ -89,14 +91,24 @@ public class PriceEntryController extends GenericModule {
 
 
     @QueryMapping
-    public List<PriceEntry> getPriceByDateAndPriority(@Argument int tariff, @Argument int productId, @Argument int brandId,@Argument String currentDate) {
-        List<PriceEntry>objList = priceEntryManager.geAllPrices();
+    public List<PriceEntry> getPriceByDateAndPriorityAndTariff(@Argument int tariffId, @Argument int productId, @Argument int brandId,@Argument String currentDate) throws Exception {
+        QueryDTO queryDTO= new QueryDTO();
+        queryDTO.setBrandId((long)brandId);
+        queryDTO.setProductId((long)productId);
+        queryDTO.setTariffId((long)tariffId);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        LocalDateTime dateTime = LocalDateTime.parse(currentDate, formatter);
+        queryDTO.setDate(dateTime);
+        List<PriceEntry>objList = priceEntryManager.getPriceEntryByQuerygrapQL(queryDTO);
         return objList;
     }
+
+
 
     @QueryMapping
     public List<PriceEntry>  priceEntries(){
         List<PriceEntry>objList = priceEntryManager.geAllPrices();
+
         return objList;
     }
 

@@ -58,6 +58,18 @@ public class PriceEntryFinderSpecification {
         };
     }
 
+    public static Specification<PriceEntry> findOntariff(Long tariffId){
+        return new Specification<PriceEntry>(){
+            public Predicate toPredicate(Root<PriceEntry> root, CriteriaQuery<?> query, CriteriaBuilder builder) {
+
+                Join<Product, PriceEntry> tariffJoin = root.join("tariff");
+                Predicate tariffPred = builder.equal(tariffJoin.get("id"), tariffId);
+                return tariffPred;
+
+            }
+        };
+    }
+
 
 
 }

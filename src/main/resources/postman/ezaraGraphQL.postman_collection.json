@@ -14,7 +14,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "query{\r\n    priceEntries{\r\n        brand{id}\r\n        currency,\r\n        price\r\n    }\r\n}",
+						"query": "query{\r\n    priceEntries{\r\n        brand{id},\r\n        currency,\r\n        price\r\n    }\r\n}",
 						"variables": ""
 					}
 				},
@@ -40,8 +40,8 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "query getPriceByDateAndPriority(\r\n    $tariffId: String!,\r\n    $productId: String!,\r\n    $brandId: String!,\r\n    $currentDate: String!\r\n){\r\ngetPriceByDateAndPriority(\r\n    tariffId: $tariff,\r\n    productId: $productId,\r\n    brandId: $brandId,\r\n    currentDate: $currentDate\r\n){\r\nbrand{id}\r\n}\r\n\r\n}\r\n",
-						"variables": "{\r\n\"tariffId\":10,\r\n\"productId\":10,\r\n\"brandId\":10,\r\n\"currentDate\":\"hoy\"\r\n\r\n}"
+						"query": "query getPriceByDateAndPriorityAndTariff(\r\n    $tariffId: Int!,\r\n    $productId: Int!,\r\n    $brandId: Int!,\r\n    $currentDate: String!\r\n){\r\ngetPriceByDateAndPriorityAndTariff(\r\n    tariffId: $tariffId,\r\n    productId: $productId,\r\n    brandId: $brandId,\r\n    currentDate: $currentDate\r\n){\r\n    brand{id},\r\n    currency,\r\n    price\r\n}\r\n\r\n}\r\n",
+						"variables": "{\r\n\"tariffId\":10,\r\n\"productId\":35455,\r\n\"brandId\":1,\r\n\"currentDate\":\"2020/06/14 10:00:00\"\r\n\r\n}"
 					}
 				},
 				"url": {
