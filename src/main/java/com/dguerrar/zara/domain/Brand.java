@@ -2,12 +2,14 @@ package com.dguerrar.zara.domain;
 
 import lombok.Data;
 
+
 import javax.persistence.*;
 import java.io.Serializable;
+
 @Data
 @Entity
 @Table(name="brand")
-public class Brand implements Serializable {
+public class Brand  implements Serializable  {
 
 
     @Id

@@ -23,12 +23,12 @@ public class ProductManager extends GenericModule {
     @Autowired
     private ProductConverter converter;
 
-    public List<ProductDTO> geAllProducts(){
+    public List<ProductDTO> geAllProducts() throws Exception {
         return converter.toDTOList(productRepository.findAll());
     }
 
 
-    public ProductDTO getProductById(Long id){
+    public ProductDTO getProductById(Long id) throws Exception {
 
         Optional<Product> productOptional= productRepository.findById(id);
 

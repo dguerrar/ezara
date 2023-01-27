@@ -20,12 +20,12 @@ public class BrandManager extends GenericModule {
     @Autowired
     private BrandConverter converter;
 
-    public List<BrandDTO> geAllBrands(){
+    public List<BrandDTO> geAllBrands() throws Exception {
         return converter.toDTOList(brandRepository.findAll());
     }
 
 
-    public BrandDTO getBrandById(Long id){
+    public BrandDTO getBrandById(Long id) throws Exception {
 
         Optional<Brand> entryOptional= brandRepository.findById(id);
 

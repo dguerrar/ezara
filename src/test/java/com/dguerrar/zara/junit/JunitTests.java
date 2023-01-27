@@ -50,7 +50,7 @@ class JunitTests {
 	}
 
 	@Test
-	void getBrandById(){
+	void getBrandById() throws Exception {
 		BrandDTO brands=brandManager.getBrandById(1l);
 		assertNotNull(brands);
 
@@ -59,7 +59,7 @@ class JunitTests {
 
 
 	@Test
-	void getAllBrands(){
+	void getAllBrands() throws Exception {
 		List<BrandDTO> brands=brandManager.geAllBrands();
 		assertNotNull(brands);
 		assertTrue(CollectionUtils.isNotEmpty(brands));
@@ -67,7 +67,7 @@ class JunitTests {
 	}
 
 	@Test
-	void getAllProducts(){
+	void getAllProducts() throws Exception {
 		List<ProductDTO> products=productManager.geAllProducts();
 		assertNotNull(products);
 		assertTrue(CollectionUtils.isNotEmpty(products));
@@ -75,7 +75,7 @@ class JunitTests {
 	}
 
 	@Test
-	void getProductById(){
+	void getProductById() throws Exception {
 		ProductDTO products=productManager.getProductById(1l);
 		assertNotNull(products);
 
@@ -84,7 +84,7 @@ class JunitTests {
 
 
 	@Test
-	void getAllTariffs(){
+	void getAllTariffs() throws Exception {
 		List<TariffDTO> tariffs= tariffManager.geAllTariffs();
 		assertNotNull(tariffs);
 		assertTrue(CollectionUtils.isNotEmpty(tariffs));
@@ -92,7 +92,7 @@ class JunitTests {
 	}
 
 	@Test
-	void getTariffById(){
+	void getTariffById() throws Exception {
 		TariffDTO priceListEntries= tariffManager.getTariffById(1l);
 		assertNotNull(priceListEntries);
 
@@ -100,15 +100,15 @@ class JunitTests {
 
 
 	@Test
-	void getAllPriceEntry(){
-		List<PriceEntry> priceEntries=priceEntryManager.geAllPrices();
+	void getAllPriceEntry() throws Exception {
+		List<PriceEntryDTO> priceEntries=priceEntryManager.geAllPrices();
 		assertNotNull(priceEntries);
 		assertTrue(CollectionUtils.isNotEmpty(priceEntries));
 
 	}
 
 	@Test
-	void getPriceEntryById(){
+	void getPriceEntryById() throws Exception {
 		PriceEntryDTO priceEntries=priceEntryManager.getPriceEntryById(1l);
 		assertNotNull(priceEntries);
 

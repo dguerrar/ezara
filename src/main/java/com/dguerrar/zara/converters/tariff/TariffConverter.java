@@ -1,26 +1,36 @@
 package com.dguerrar.zara.converters.tariff;
 
+import com.dguerrar.zara.controllers.product.ProductController;
+import com.dguerrar.zara.controllers.tariff.TariffController;
 import com.dguerrar.zara.domain.Tariff;
 import com.dguerrar.zara.dto.TariffDTO;
 import com.dguerrar.zara.generic.GenericConverter;
 import com.dguerrar.zara.generic.GenericModule;
 import org.springframework.beans.BeanUtils;
+import org.springframework.hateoas.Link;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+
 @Component
 public class TariffConverter extends GenericModule implements GenericConverter<Tariff, TariffDTO> {
 
 
-    public TariffDTO toDTO(Tariff price){
-        if (price == null){
+    public TariffDTO toDTO(Tariff tariff) throws Exception {
+        if (tariff == null){
             return null;
         }
         TariffDTO dto = new TariffDTO();
-        BeanUtils.copyProperties(price,dto);
+        BeanUtils.copyProperties(tariff,dto);
 
+
+        Link selfLink = linkTo(methodOn(TariffController.class)
+                .getTarriffById(tariff.getId())).withSelfRel();
+        dto.add(selfLink);
         return dto;
     }
 
@@ -37,7 +47,7 @@ public class TariffConverter extends GenericModule implements GenericConverter<T
 
 
     @Override
-    public List<TariffDTO> toDTOList(List<Tariff> list) {
+    public List<TariffDTO> toDTOList(List<Tariff> list) throws Exception {
         List<TariffDTO> dataSetDTOList= new ArrayList<>();
 
         for (Tariff dataSet: list) {

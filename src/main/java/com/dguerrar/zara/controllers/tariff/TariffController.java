@@ -57,7 +57,7 @@ public class TariffController extends GenericModule {
                     content = @Content),
             @ApiResponse(responseCode = "500", description = "Generic Error",
                     content = @Content)})
-    public ResponseEntity getTtariffariffById(@PathVariable Long id) throws Exception{
+    public ResponseEntity getTarriffById(@PathVariable Long id) throws Exception{
         TariffDTO dtoEntry = tariffManager.getTariffById(id);
         ReturnDTO dto = new ReturnDTO();
         dto.setObject(dtoEntry);

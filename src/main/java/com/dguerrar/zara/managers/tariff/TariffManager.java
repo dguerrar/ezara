@@ -23,12 +23,12 @@ public class TariffManager extends GenericModule {
     @Autowired
     private TariffConverter converter;
 
-    public List<TariffDTO> geAllTariffs(){
+    public List<TariffDTO> geAllTariffs() throws Exception {
         return converter.toDTOList(tariffRepository.findAll());
     }
 
 
-    public TariffDTO getTariffById(Long id){
+    public TariffDTO getTariffById(Long id) throws Exception {
 
         Optional<Tariff> entryOptional= tariffRepository.findById(id);
 

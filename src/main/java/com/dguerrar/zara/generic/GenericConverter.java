@@ -11,9 +11,9 @@ import java.util.stream.Stream;
 
 public interface GenericConverter<T,E> {
 
-    public <E> E toDTO(T t);
+    public <E> E toDTO(T t) throws Exception;
     public <T> T toEntity(E e);
-    public List<E> toDTOList(List<T> t);
+    public List<E> toDTOList(List<T> t) throws Exception;
 
     public default  String[] getNullPropertyNames(Object source) {
         final BeanWrapper wrappedSource = new BeanWrapperImpl(source);

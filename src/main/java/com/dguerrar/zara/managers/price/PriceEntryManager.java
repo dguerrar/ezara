@@ -33,8 +33,8 @@ public class PriceEntryManager extends GenericModule {
     @Autowired
     private PriceEntryConverter converter;
 
-    public List<PriceEntry> geAllPrices(){
-        return priceEntryRepository.findAll();
+    public List<PriceEntryDTO> geAllPrices() throws Exception {
+        return converter.toDTOList(priceEntryRepository.findAll());
     }
 
     public List<PriceEntryDTO>  getPriceEntryByQuery(QueryDTO queryDTO) throws Exception {
@@ -54,7 +54,7 @@ public class PriceEntryManager extends GenericModule {
     }
 
 
-    public PriceEntryDTO getPriceEntryById(Long id){
+    public PriceEntryDTO getPriceEntryById(Long id) throws Exception {
 
         Optional<PriceEntry> entryOptional= priceEntryRepository.findById(id);
 
