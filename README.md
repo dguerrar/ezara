@@ -1,6 +1,6 @@
 # ezara TEST by dguerrar@gmail.com
 
-##DESIGN
+##DESIGN  HATEOAS IMPLEMENTATION
 - DB are created using the Flyway frameworks. 2 revisions for creating the tables and insert the initial data
 - I chose to create one table for each of the entities needed (brand, product, price and price list) and use the following entities (brand, product, price) as FK in the main table (price_list)
 - logs are build through SLF4 +  AOP in order to make code clear
